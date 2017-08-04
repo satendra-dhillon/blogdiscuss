@@ -1,0 +1,33 @@
+<div>
+  <h3><%= @blog.title %></h3>
+  <p>
+    <%= @blog.description %>
+  </p>
+    <small>Posted on <%= time_ago_in_words(@blog.created_at) %> ago</small>
+</div>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              blogs_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_blog_path(@blog), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              blog_path(@blog),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+<div>
+  <h4><%= pluralize(@blog.comments.count, "Comment") %></h4>
+  <%#= render @blog.comments.sort { |a,b| a.created_at <=> b.created_at } %>
+  <!-- <h4>Add a comment:</h4> -->
+  <%#= render 'comments/form' %><br />
+</div>
+
+
+<%= form_for [@blog, Comment.new] do |f| %>
+<%= f.text_area :body, placeholder: "Add a comment" %><br/>
+<%= f.submit "Add Comment" %>
+<% end %>
+
+<ul>
+  <%= render(partial: 'comments/comment', collection: @blog.comments) %>
+</ul>

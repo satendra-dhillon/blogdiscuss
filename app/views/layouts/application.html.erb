@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DemoBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag Ckeditor.cdn_url%>
+  </head>
+
+  <body>
+    <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+
+ <!-- <div id="user_nav">
+  <%# if user_signed_in? %>
+    Signed in as <%#= current_user.email %>. Not you?
+    <%#= link_to "Sign out", signout_path, :method => :delete %>
+  <%# else %>
+  <%#= link_to('Login', new_user_session_path)  %>  
+  <%#= link_to "Sign in with Twitter", "/auth/twitter" %>
+  <%#= link_to "Sign in with Facebook", "/auth/facebook" %>
+    <%#= link_to "Sign up", new_user_registration_path %> or <%#= link_to "sign in", new_user_session_path %>
+  <%# end %>
+</div>
+ -->
+  </body>
+</html>
