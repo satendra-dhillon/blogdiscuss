@@ -1,24 +1,48 @@
-<div class="ui four stackable cards">
-  <% @blogs.each do |blog| %>
-    <!-- <div class="card"> -->
-    <!-- </div> -->
-    <%#= link_to blog.title, blog_path(blog), class: "card" %>
-    <%= link_to(blog_path(blog)) do %>
-      <div class="card-block">
-        <h3 class="card-title">
-          <%=blog.title%>
-        </h3>
-        <%=blog.description%>
-        <p>
-          <small>Last Updated: <%= time_ago_in_words(blog.created_at) %> ago</small>
-        </p>
-        <!-- <p class="card-text" [innerHTML]="post.description"></p> -->
-      </div>
-    <% end %>
-    <hr />
-  <% end %>
+<div class="container">
 
-  <%= link_to t('.new', :default => t("helpers.links.new")), new_blog_path, :class => 'btn btn-primary' %>
-    
+  <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+          <h1 class="page-header">
+              Page Heading
+              <small>Secondary Text</small>
+          </h1>
+
+          <!-- First Blog Post -->
+            <% @blogs.each do |blog| %>
+              <!-- <div class="card"> -->
+              <!-- </div> -->
+              <%#= link_to blog.title, blog_path(blog), class: "card" %>
+              <h2>
+                  <%=link_to blog.title, blog_path(blog) %>
+                  <!-- <a href="#">Blog Post Title</a> -->
+              </h2>
+              <p class="lead">
+                  by <a href="#"><%=blog.blogger.full_name%></a>
+              </p>
+              <p><span class="glyphicon glyphicon-time"></span> Posted on <%= time_ago_in_words(blog.created_at) %> ago</p>
+              <hr>
+              <p>
+                <%=blog.description%>
+              </p>
+                <%=link_to "Read More", blog_path(blog),class: "btn btn-primary" %>
+                <!-- <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a> -->
+             
+            <hr>
+            <%end%>
+            <%= link_to t('.new', :default => t("helpers.links.new")), new_blog_path, :class => 'btn btn-primary' %>
+
+
+  </div>
+  </div>
+
+  
 </div>
+
+
+
+
+
 
