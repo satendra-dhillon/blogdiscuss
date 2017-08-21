@@ -34,6 +34,8 @@ Blog
 
 Comment
 
+Tags
+
 
 
 https://stackoverflow.com/questions/39044670/rails-devise-twitter-oauth-redirect-to-form-to-continue-oauth-registration
