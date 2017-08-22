@@ -1,30 +1,124 @@
-<div>
-  <h3><%= @blog.title %></h3>
-  <p>
-    <%= @blog.description %>
-  </p>
-    <small>Posted on <%= time_ago_in_words(@blog.created_at) %> ago</small>
-</div>
+<div class="container">
 
-<%= link_to t('.back', :default => t("helpers.links.back")), blogs_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_path(@blog), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),     blog_path(@blog),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-<div>
-  <h4><%= pluralize(@blog.comments.count, "Comment") %></h4>
-  <%#= render @blog.comments.sort { |a,b| a.created_at <=> b.created_at } %>
-  <!-- <h4>Add a comment:</h4> -->
-  <%#= render 'comments/form' %><br />
-</div>
+        <div class="row">
+
+            <div class="col-lg-8">
+
+          
+                <h1><%= @blog.title %></h1>
 
 
-<%= form_for [@blog, Comment.new] do |f| %>
-<%= f.text_area :body, placeholder: "Add a comment" %><br/>
-<%= f.submit "Add Comment", class: 'btn btn-primary'%>
-<% end %>
+                <p class="lead">
+                    by <a href="#"><%= @blog.blogger.full_name %></</a>
+                </p>
 
-<ul>
-  <%= render(partial: 'comments/comment', collection: @blog.comments) %>
-</ul>
+                <hr>
+
+                <p><span class="glyphicon glyphicon-time"></span> Posted on <%= time_ago_in_words(@blog.created_at) %> ago</p>
+
+                <hr>
+
+                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+                <hr>
+
+                <p class="lead"><%= @blog.description %></p>
+
+                <hr>
+
+                <div class="well">
+                    <h4>Leave a Comment:</h4>
+
+                    <%= form_for [@blog, Comment.new] do |f| %>
+                    <div class="form-group">
+                      <%= f.text_area :body, placeholder: "Add a comment", class: "form-control" %><br/>
+                      </div>
+                      <%= f.submit "Add Comment", class: 'btn btn-primary'%>
+                    <% end %>
+                  
+                </div>
+
+                <hr>
+                <h4><%= pluralize(@blog.comments.count, "Comment") %></h4>
+
+                    
+                      <%= render(partial: 'comments/comment', collection: @blog.comments) %>
+                     
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>            
+
+
+
+
+
+
+
+
+
+
+

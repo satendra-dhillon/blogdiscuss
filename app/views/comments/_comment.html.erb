@@ -1,20 +1,22 @@
-<li>
-  <strong><%= comment.commenter.full_name %> said:</strong>
-  <%= comment.body %>
-  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
-  <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                [comment.blog, comment],
-                :method => :delete,
-                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                :class => 'btn btn-xs btn-danger' %>
+<div class="media">
+<div class="media-body">
+  <h4 class="media-heading"><%= comment.commenter.full_name %>
+      <small><%= time_ago_in_words(comment.created_at) %> ago</small>
+  </h4>
+    <%= comment.body %>
 
-  <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
-      <% end %>
+  <div class="well">
+    <%= form_for [comment, Comment.new] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :body, placeholder: "Add a Reply", class: "form-control" %><br/>
+        </div>
+        <%= f.submit "Reply"  %>
+        <% end %>
+        </div>
 
-  <ul>
-      <%= render partial: 'comments/comment', collection: comment.comments %>
-  </ul>
+    <ul>
+        <%= render partial: 'comments/comment', collection: comment.comments %>
+    </ul>
 
-</li>
+</div>
+</div>

@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "twitter-bootstrap-rails"
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'ckeditor'

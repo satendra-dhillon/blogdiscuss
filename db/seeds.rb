@@ -20,6 +20,6 @@ Category.all.each_with_index do |cat, index|
 end
 
 Blog.all.each_with_index do |blog, index|
-	blog.comments.create(body: "Comment for #{blog.title} {index}", commenter: User.first)
-	blog.comments.create(body: "Comment for #{blog.title} {index + 1}", commenter: User.last)
+	blog.comments.create(body: "Comment for #{blog.title} #{index}", commenter: User.first)
+	blog.comments.create(body: "Comment for #{blog.title} #{index + 1}", commenter: User.last)
 end
