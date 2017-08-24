@@ -3,7 +3,13 @@ class BlogsController < ApplicationController
 	before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@blogs = Blog.all
+    if params[:search]
+      @blogs = Blog.search(params[:search])#.order("created_at DESC")
+    elsif params[:filter]
+      @blogs = Blog.where(category_id: params[:filter])#.order("created_at DESC")
+    else
+      @blogs = Blog.all.order('created_at DESC')
+    end
 	end
 
 	def show

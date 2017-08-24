@@ -11,6 +11,8 @@
           </h1>
 
           <!-- First Blog Post -->
+          <% if @blogs.present?%>
+            
             <% @blogs.each do |blog| %>
               <!-- <div class="card"> -->
               <!-- </div> -->
@@ -32,10 +34,33 @@
              
             <hr>
             <%end%>
-            <%= link_to t('.new', :default => t("helpers.links.new")), new_blog_path, :class => 'btn btn-primary' %>
+          <% else %>
+            <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+          <% end %>
+          <%= link_to t('.new', :default => t("helpers.links.new")), new_blog_path, :class => 'btn btn-primary' %>
 
 
   </div>
+   <div class="col-md-4">
+
+      <div class="well">
+          <h4>Blog Search</h4>
+            <%= form_tag(blogs_path, :method => "get", id: "title-search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+            <%= submit_tag "Search" %>
+          <% end %>
+
+
+
+
+          <%= form_tag(blogs_path, :method => "get", id: "category-filter-form") do %>
+            <div class="field">
+              <label>Category Filter :</label>
+              <%= select_tag(:filter,content_tag(:option,'select one...',:value=>"") + options_from_collection_for_select(Category.all, "id", "name"), 
+                 :onchange => (("javascript: this.form.submit();")))%>
+            </div>    
+          <% end %>
+      </div>
   </div>
 
   

@@ -9,22 +9,16 @@
 
 
                 <p class="lead">
-                    by <a href="#"><%= @blog.blogger.full_name %></</a>
+                    by <%= @blog.blogger.full_name %>
                 </p>
 
-                <hr>
 
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <%= time_ago_in_words(@blog.created_at) %> ago</p>
 
                 <hr>
 
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
-                <hr>
-
                 <p class="lead"><%= @blog.description %></p>
 
-                <hr>
 
                 <div class="well">
                     <h4>Leave a Comment:</h4>
@@ -38,13 +32,8 @@
                   
                 </div>
 
-                <hr>
                 <h4><%= pluralize(@blog.comments.count, "Comment") %></h4>
-
-                    
                       <%= render(partial: 'comments/comment', collection: @blog.comments) %>
-                     
-
             </div>
 
             <div class="col-md-4">
@@ -102,13 +91,7 @@
 
         <hr>
 
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </footer>
+        
 
     </div>            
 

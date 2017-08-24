@@ -14,4 +14,10 @@ class Blog < ApplicationRecord
     ]
   end
 
+  def self.search(search)
+  	# binding.pry
+  	where("title LIKE ?", "%#{search}%")
+  	# where("description LIKE ?", "%#{search}%")
+  end
+
 end
