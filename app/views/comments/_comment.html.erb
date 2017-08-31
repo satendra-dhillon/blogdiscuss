@@ -4,19 +4,22 @@
       <small><%= time_ago_in_words(comment.created_at) %> ago</small>
   </h4>
     <%= comment.body %>
+    <a href="javascript:void(0)" class="post_reply" >Rply</a>
 
-  <div class="well">
-    <%= form_for [comment, Comment.new] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :body, placeholder: "Add a Reply", class: "form-control" %><br/>
-        </div>
-        <%= f.submit "Reply"  %>
+    <div class="rply_box">
+      <div class="well">
+        <%= form_for [comment, Comment.new] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, placeholder: "Add a Reply", class: "form-control" %><br/>
+          </div>
+          <%= f.submit "Reply"  %>
         <% end %>
-        </div>
+      </div>
 
-    <ul>
-        <%= render partial: 'comments/comment', collection: comment.comments %>
-    </ul>
+      <ul>
+          <%= render partial: 'comments/comment', collection: comment.comments %>
+      </ul>
+    </div>
 
 </div>
 </div>

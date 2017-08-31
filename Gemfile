@@ -43,6 +43,7 @@ gem "omniauth"
 gem "omniauth-twitter"
 gem 'omniauth-facebook'
 gem 'oauth2'
+gem 'jquery-rails'
 
 
 group :development, :test do

@@ -22,3 +22,7 @@
 footer {
     margin: 50px 0;
 }
+
+.rply_box{
+	    display: none;
+}

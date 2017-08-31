@@ -13,3 +13,14 @@
 //= require rails-ujs
 //= require turbolinks
 //= require ckeditor/init
+//= require jquery
+//= require jquery_ujs
+
+
+
+$(document).ready(function(){
+	$('.post_reply').click(function(){
+		alert("possss")
+		$('.rply_box').toggle();
+	})
+})
